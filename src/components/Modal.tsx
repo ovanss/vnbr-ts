@@ -1,10 +1,11 @@
 import { ModalHeader, ModalBody, Modal } from 'carbon-components-react';
 import React from 'react';
+import { IModalProps } from '../interfaces';
 
-interface IModalProps {
-  isModalOpen?: boolean;
-  closeModal: () => void;
-}
+// interface IModalProps {
+//   isModalOpen?: boolean;
+//   closeModal: () => void;
+// }
 
 const ModalC: React.FC<IModalProps> = ({ isModalOpen, closeModal }) => {
   return (

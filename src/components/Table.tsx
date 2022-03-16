@@ -1,4 +1,5 @@
 import React from 'react';
+import { IRow, IHeader, IArticle } from '../interfaces';
 
 import {
   DataTable,
@@ -12,45 +13,6 @@ import {
 } from 'carbon-components-react';
 
 // var name:string = "John";
-
-interface IArticle {
-  // source: ISource,
-
-  author?: string;
-  rows?: any;
-  headers?: any;
-  getHeaderProps?: any;
-  getRowProps?: any;
-  getTableProps?: any;
-}
-interface IHeader {
-  key: string;
-  header: string;
-}
-
-interface IRow {
-  id: string;
-  name: string;
-  status: string;
-}
-
-interface ISource {
-  id: string | null;
-  name: string;
-}
-
-interface IArticlesProps {
-  articles: {
-    source: ISource;
-    author: string;
-    title: string;
-    description: string;
-    url: string;
-    urlToImage: string;
-    publishedAt: string;
-    content: string;
-  }[];
-}
 
 //we can define all extra props beside the default(children) and add object that describe the structure of the object from props
 // we don't only tell what component should return, but also the props component eventually get
