@@ -1,9 +1,10 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.scss';
 import TableC from './components/Table';
-import {Button} from 'carbon-components-react';
+import { Button } from 'carbon-components-react';
 
-const url = 'https://newsapi.org/v2/everything?q=bitcoin&apiKey=fb9a01961a354bde95a89f74f155179a';
+const url =
+  'https://newsapi.org/v2/everything?q=bitcoin&apiKey=fb9a01961a354bde95a89f74f155179a';
 
 // interface ISource {
 //   id: number | null,
@@ -24,19 +25,19 @@ const url = 'https://newsapi.org/v2/everything?q=bitcoin&apiKey=fb9a01961a354bde
 // ======================================
 
 interface ISource {
-  id: number | null,
-  name: string,
+  id: number | null;
+  name: string;
 }
 
 interface IArticle {
-  source: ISource,
-  author: string,
+  source: ISource;
+  author: string;
 }
 
 interface IEverythingResponse {
   // status: string,
   // totalResults: number,
-  articles: Array<IArticle>
+  articles: Array<IArticle>;
 }
 
 // interface Article {
@@ -64,35 +65,31 @@ function App() {
   const [loading, setLoading] = useState(false);
   const [articles, setArticles] = useState<IEverythingResponse | undefined>();
 
-
-  const fetchNews =async () => {
-
-    setLoading(true)
-    try{
+  const fetchNews = async () => {
+    setLoading(true);
+    try {
       const response = await fetch(url);
-      const {articles} = await response.json();
+      const { articles } = await response.json();
       console.log(articles);
       setLoading(false);
-    }catch(err){
-      console.log(err)
-      setLoading(false)
+    } catch (err) {
+      console.log(err);
+      setLoading(false);
     }
-    
-  }
+  };
 
-  useEffect(()=>{
+  useEffect(() => {
     fetchNews();
-  }, [])
+  }, []);
 
-  if(loading){
-    return <p>loading....</p>
+  if (loading) {
+    return <p>loading....</p>;
   }
 
   return (
     <div className="App">
-
-     <TableC />
-     <Button kind="secondary">I am a button</Button>
+      <TableC />
+      <Button kind="secondary">I am a button</Button>
     </div>
   );
 }
