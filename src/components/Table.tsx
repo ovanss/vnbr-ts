@@ -34,35 +34,72 @@ interface IRow {
   status: string;
 }
 
-const TableC = () => {
+interface ISource {
+  id: string | null;
+  name: string;
+}
+
+interface IArticlesProps {
+  articles: {
+    source: ISource;
+    author: string;
+    title: string;
+    description: string;
+    url: string;
+    urlToImage: string;
+    publishedAt: string;
+    content: string;
+  }[];
+}
+
+//we can define all extra props beside the default(children) and add object that describe the structure of the object from props
+// we don't only tell what component should return, but also the props component eventually get
+// const TableC: React.FC<IArticlesProps> = (props) => {
+const TableC: React.FC = () => {
   const rows = [
     {
       id: 'a',
-      name: 'Load balancer ',
-      status: 'Disabled',
+      author: 'ovan',
+      title: 'this is my article',
+      content: 'fkadlkf aflkajdf alkdsf aldfkjas dflkasdf las...',
+      desc: 'd,faj;dslkfjasdlkf adslkfjasdlkf ajsdlkf slkfj',
     },
     {
       id: 'b',
-      name: 'Load balancer 2',
-      status: 'Starting',
+      author: 'ovan',
+      title: 'this is my article',
+      content: 'fkadlkf aflkajdf alkdsf aldfkjas dflkasdf las...',
+      desc: 'd,faj;dslkfjasdlkf adslkfjasdlkf ajsdlkf slkfj',
     },
     {
       id: 'c',
-      name: 'Load balancer 3',
-      status: 'Active',
+      author: 'ovan',
+      title: 'this is my article',
+      content: 'fkadlkf aflkajdf alkdsf aldfkjas dflkasdf las...',
+      desc: 'd,faj;dslkfjasdlkf adslkfjasdlkf ajsdlkf slkfj',
     },
   ];
 
   const headers = [
     {
-      key: 'name',
-      header: 'Name',
+      key: 'author',
+      header: 'author',
     },
     {
-      key: 'status',
-      header: 'Status',
+      key: 'title',
+      header: 'title',
+    },
+    {
+      key: 'content',
+      header: 'content',
+    },
+    {
+      key: 'desc',
+      header: 'desc',
     },
   ];
+  // const headers = Object.keys(props.articles[0]);
+  // console.log(headers);
 
   return (
     <div>
