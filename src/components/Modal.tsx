@@ -1,4 +1,4 @@
-import { ModalHeader, ModalBody, ComposedModal } from 'carbon-components-react';
+import { ModalHeader, ModalBody, Modal } from 'carbon-components-react';
 import React from 'react';
 
 interface IModalProps {
@@ -6,17 +6,18 @@ interface IModalProps {
   closeModal: () => void;
 }
 
-const Modal: React.FC<IModalProps> = (props) => {
+const ModalC: React.FC<IModalProps> = ({ isModalOpen, closeModal }) => {
   return (
     <div>
-      <ComposedModal
-        open={props.isModalOpen}
+      <Modal
+        open={isModalOpen}
         size="lg"
-        // onRequestClose = {props.closeModal}
-        onClose={() => props.closeModal()}
-        // primaryButtonText
+        onRequestClose={() => closeModal()}
+        primaryButtonText="Read More >>"
+        secondaryButtonText="Cancel"
+        modalHeading="News"
       >
-        <ModalHeader />
+        {/* <ModalHeader /> */}
         <ModalBody>
           <p className="bx--modal-content__text">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
@@ -27,9 +28,9 @@ const Modal: React.FC<IModalProps> = (props) => {
             felis porttitor.
           </p>
         </ModalBody>
-      </ComposedModal>
+      </Modal>
     </div>
   );
 };
 
-export default Modal;
+export default ModalC;

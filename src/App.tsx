@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './App.scss';
 import TableC from './components/Table';
 import { Button } from 'carbon-components-react';
-import Modal from './components/Modal';
+import ModalC from './components/Modal';
 
 const url =
   'https://newsapi.org/v2/everything?q=bitcoin&apiKey=fb9a01961a354bde95a89f74f155179a';
@@ -67,9 +67,6 @@ function App() {
   const [articles, setArticles] = useState<IEverythingResponse | undefined>();
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const openModal = () => {
-    setIsModalOpen(true);
-  };
   const closeModal = (): void => {
     setIsModalOpen(false);
   };
@@ -99,7 +96,7 @@ function App() {
     <div className="App">
       {/* <TableC articles={articles} /> */}
       <TableC />
-      <Modal isModalOpen={isModalOpen} closeModal={closeModal} />
+      <ModalC isModalOpen={isModalOpen} closeModal={closeModal} />
       <Button kind="secondary" onClick={() => setIsModalOpen(true)}>
         open modal
       </Button>
