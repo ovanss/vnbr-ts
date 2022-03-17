@@ -5,10 +5,10 @@ export interface IModalProps {
 
 // Table
 
-export interface IArticle {
+export interface ITable {
   // source: ISource,
 
-  author?: string;
+  // author?: string;
   rows?: any;
   headers?: any;
   getHeaderProps?: any;
@@ -42,4 +42,28 @@ export interface IArticlesProps {
     publishedAt: string;
     content: string;
   }[];
+}
+// App
+
+export interface ISource {
+  id: string | null;
+  name: string;
+}
+
+export interface IArticle {
+  author: string;
+  source: ISource;
+  content: string;
+  description: string;
+  title: string;
+  url: string;
+  urlToImage: string;
+  publishedAt: string;
+  // publishedAt: Date;
+}
+
+export interface IEverythingResponse {
+  // status: string,
+  // totalResults: number,
+  articles: Array<IArticle>;
 }

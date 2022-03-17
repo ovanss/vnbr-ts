@@ -1,4 +1,4 @@
-import { ModalHeader, ModalBody, Modal } from 'carbon-components-react';
+import { ModalBody, Modal } from 'carbon-components-react';
 import React from 'react';
 import { IModalProps } from '../interfaces';
 
@@ -18,7 +18,6 @@ const ModalC: React.FC<IModalProps> = ({ isModalOpen, closeModal }) => {
         secondaryButtonText="Cancel"
         modalHeading="News"
       >
-        {/* <ModalHeader /> */}
         <ModalBody>
           <p className="bx--modal-content__text">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
