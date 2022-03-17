@@ -32,7 +32,7 @@ interface TableCProps {
 // function TableC({text}: interfaceName){
 // const TableC: React.FC<IEverythingResponse> = (props) => {
 const TableC: React.FC<TableCProps> = ({ articles, openModal }) => {
-  console.log(articles);
+  // console.log(articles);
   if (articles.length <= 0) return null;
   const headers: { key: string; header: string }[] = Object.keys(
     articles[0]
@@ -86,7 +86,7 @@ const TableC: React.FC<TableCProps> = ({ articles, openModal }) => {
                     {row.cells!.map((cell: any) => (
                       <TableCell
                         key={cell.id}
-                        onClick={() => openModal(cell.id)}
+                        onClick={() => openModal(row.id)}
                       >
                         {cell.value}
                       </TableCell>
