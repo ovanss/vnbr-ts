@@ -50,7 +50,7 @@ const TableC: React.FC<TableCProps> = ({ articles, openModal }) => {
           getRowProps,
           getTableProps,
         }: ITable) => (
-          <TableContainer title="DataTable">
+          <TableContainer title="News - Everything">
             <Table {...getTableProps()}>
               <TableHead>
                 <TableRow>

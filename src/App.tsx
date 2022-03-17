@@ -3,13 +3,7 @@ import './App.scss';
 import TableC from './components/Table';
 import { Button } from 'carbon-components-react';
 import ModalC from './components/Modal';
-import {
-  IEverythingResponse,
-  IArticle,
-  IArticleWithSource,
-  IFilteredArticle,
-} from './interfaces';
-import { rows } from './dataTable';
+import { IArticleWithSource, IFilteredArticle } from './interfaces';
 
 const url =
   'https://newsapi.org/v2/everything?q=bitcoin&apiKey=fb9a01961a354bde95a89f74f155179a';
@@ -42,7 +36,8 @@ function App() {
           // console.log(article);
           // return { ...article, id: index, source: 'ovan' };
           const { source, ...newArticle } = singleArticle;
-          return { ...newArticle, id: index.toString(), isExpanded: false };
+          // return { ...newArticle, id: index.toString(), isExpanded: false };
+          return { ...newArticle, id: index.toString() };
         }
       );
       setArticles(filteredArticle);

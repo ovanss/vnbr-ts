@@ -26,10 +26,10 @@ const ModalC: React.FC<IModalProps> = ({
         open={isModalOpen}
         size="lg"
         onRequestClose={() => closeModal()}
-        // primaryButtonText="Read More >>"
+        primaryButtonText="Edit me"
         // secondaryButtonText="Cancel"
         modalHeading={content?.title}
-        passiveModal
+        // passiveModal
       >
         <ModalBody>
           <p className="bx--modal-content__text bx--modal-content__regular-content">
