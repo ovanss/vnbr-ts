@@ -1,13 +1,23 @@
 import { ModalBody, Modal } from 'carbon-components-react';
 import React from 'react';
-import { IModalProps } from '../interfaces';
+import { IFilteredArticle } from '../interfaces';
 
-// interface IModalProps {
-//   isModalOpen?: boolean;
-//   closeModal: () => void;
-// }
+interface IModalProps {
+  articles: Array<IFilteredArticle>;
+  isModalOpen?: boolean;
+  closeModal: () => void;
+  activeModal: string;
+}
 
-const ModalC: React.FC<IModalProps> = ({ isModalOpen, closeModal }) => {
+const ModalC: React.FC<IModalProps> = ({
+  isModalOpen,
+  closeModal,
+  articles,
+  activeModal,
+}) => {
+  console.log(articles, activeModal);
+  const content = articles.filter((article) => article.id === activeModal);
+  console.log('content', content);
   return (
     <div>
       <Modal
@@ -16,7 +26,7 @@ const ModalC: React.FC<IModalProps> = ({ isModalOpen, closeModal }) => {
         onRequestClose={() => closeModal()}
         primaryButtonText="Read More >>"
         secondaryButtonText="Cancel"
-        modalHeading="News"
+        modalHeading="This is title"
       >
         <ModalBody>
           <p className="bx--modal-content__text">

@@ -1,7 +1,7 @@
-export interface IModalProps {
-  isModalOpen?: boolean;
-  closeModal: () => void;
-}
+// export interface IModalProps {
+//   isModalOpen?: boolean;
+//   closeModal: () => void;
+// }
 
 // Table
 
@@ -51,19 +51,28 @@ export interface ISource {
 }
 
 export interface IArticle {
-  author: string;
-  source: ISource;
+  author: string | null;
   content: string;
   description: string;
   title: string;
   url: string;
   urlToImage: string;
   publishedAt: string;
-  // publishedAt: Date;
+  // [keys: string]: string | number | null | ISource | boolean;
+}
+
+export interface IArticleWithSource extends IArticle {
+  source: ISource;
 }
 
 export interface IEverythingResponse {
   // status: string,
   // totalResults: number,
   articles: Array<IArticle>;
+}
+
+export interface IFilteredArticle extends IArticle {
+  id: string;
+  // [keys: string]: string | number | null;
+  isExpanded: boolean;
 }

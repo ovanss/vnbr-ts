@@ -3,44 +3,31 @@ import './App.scss';
 import TableC from './components/Table';
 import { Button } from 'carbon-components-react';
 import ModalC from './components/Modal';
-import { IEverythingResponse } from './interfaces';
+import {
+  IEverythingResponse,
+  IArticle,
+  IArticleWithSource,
+  IFilteredArticle,
+} from './interfaces';
+import { rows } from './dataTable';
 
 const url =
   'https://newsapi.org/v2/everything?q=bitcoin&apiKey=fb9a01961a354bde95a89f74f155179a';
 
-export interface ISubmitResult {
-  success: boolean;
-  message: string;
-}
-
-interface ISource {
-  id: string | null;
-  name: string;
-}
-
-interface IArticleTest {
-  author: string;
-  // source: string;
-  content: string;
-  description: string;
-  title: string;
-  url: string;
-  urlToImage: string;
-  publishedAt: string;
-}
-
 function App() {
   const [loading, setLoading] = useState(false);
   // const [articles, setArticles] = useState<IEverythingResponse | null>(null);
-  const [articles, setArticles] = useState<IArticleTest[]>([]);
+  const [articles, setArticles] = useState<IFilteredArticle[]>([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [activeIndex, setActiveIndex] = useState('');
 
   const closeModal = (): void => {
     setIsModalOpen(false);
   };
 
-  const openModal = (): void => {
+  const openModal = (id: string): void => {
     setIsModalOpen(true);
+    setActiveIndex(id);
   };
 
   const fetchNews = async () => {
@@ -48,8 +35,17 @@ function App() {
     try {
       const response = await fetch(url);
       const { articles } = await response.json();
-      // console.log('arrr:', articles);
-      setArticles(articles);
+      console.log('arrr:', articles);
+
+      const filteredArticle = articles.map(
+        (singleArticle: IArticleWithSource, index: number) => {
+          // console.log(article);
+          // return { ...article, id: index, source: 'ovan' };
+          const { source, ...newArticle } = singleArticle;
+          return { ...newArticle, id: index.toString(), isExpanded: false };
+        }
+      );
+      setArticles(filteredArticle);
       setLoading(false);
     } catch (err) {
       console.log(err);
@@ -70,7 +66,12 @@ function App() {
     <div className="App">
       <TableC articles={articles} openModal={openModal} />
       {/* <TableC /> */}
-      <ModalC isModalOpen={isModalOpen} closeModal={closeModal} />
+      <ModalC
+        isModalOpen={isModalOpen}
+        closeModal={closeModal}
+        articles={articles}
+        activeModal={activeIndex}
+      />
       <Button kind="secondary" onClick={() => setIsModalOpen(true)}>
         open modal
       </Button>
